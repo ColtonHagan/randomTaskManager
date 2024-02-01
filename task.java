@@ -12,13 +12,45 @@ import java.io.File;
 class TaskManager {
     private static List<Task> tasks = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
-    private static final String DIR = "C:\\Users\\Corton\\Documents\\Random Coding"; // because i don't want to bother
-                                                                                     // fixing virtual code directory
+    private static final String DIR = "C:\\Users\\Corton\\Documents\\Random Coding"; // because i don't want to bother fixing virtual code directory
 
     public static void main(String[] args) {
         loadTasks();
         taskManagement();
         saveTasks();
+    }
+
+    private static void taskManagement() {
+        boolean exit = false;
+        while (!exit) {
+            printMenu();
+            int choice = getUserChoice();
+            switch (choice) {
+                case 1:
+                    addTask();
+                    break;
+                case 2:
+                    viewTasks();
+                    break;
+                case 3:
+                    completeTask();
+                    break;
+                case 4:
+                    deleteTask();
+                    break;
+                case 5:
+                    editTask();
+                    break;
+                case 6:
+                    sortTasks();
+                    break;
+                case 7:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
     }
 
     private static void loadTasks() {
@@ -144,39 +176,6 @@ class TaskManager {
         else {
             System.out.println("Please enter y or n. Please try again");
             return yOrN(msg);
-        }
-    }
-
-    private static void taskManagement() {
-        boolean exit = false;
-        while (!exit) {
-            printMenu();
-            int choice = getUserChoice();
-            switch (choice) {
-                case 1:
-                    addTask();
-                    break;
-                case 2:
-                    viewTasks();
-                    break;
-                case 3:
-                    completeTask();
-                    break;
-                case 4:
-                    deleteTask();
-                    break;
-                case 5:
-                    editTask();
-                    break;
-                case 6:
-                    sortTasks();
-                    break;
-                case 7:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
         }
     }
 
@@ -317,9 +316,8 @@ class TaskManager {
         tasks.sort(comparator);
     }
 
-
     private static void printTaskInfo(Task task) {
-        if(task != null) {
+        if (task != null) {
             System.out.println("1. Title: " + task.getTitle());
             System.out.println("2. Description: " + task.getDescription());
             System.out.println("3. Due Date: " + task.getDateString());
