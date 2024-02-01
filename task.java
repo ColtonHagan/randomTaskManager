@@ -12,7 +12,7 @@ import java.io.File;
 class TaskManager {
     private static List<Task> tasks = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
-    private static final String DIR = "C:\\Users\\Corton\\Documents\\Random Coding"; // because i don't want to bother fixing virtual code directory
+    private static final String DIR = "C:\\Users\\Corton\\Documents\\Random Coding"; // because i don't want to bother fixing virtual code directory.
 
     public static void main(String[] args) {
         loadTasks();
